@@ -1,0 +1,38 @@
+name: Build TTS APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - run: |
+          echo "y" | sudo ${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager "ndk;26.1.10909125"
+      - run: |
+          sudo mkdir -p /home/runner/.config/.android
+          sudo chown -R runner:runner /home/runner/.config
+      - run: chmod +x gradlew native/build-native.sh
+      - run: ./gradlew assembleRelease --stacktrace
+      - name: Send APK directly to Telegram
+        run: |
+          # Finds the exact name and path of the .apk file in the folder on its own
+          APK_PATH=$(find app/build/outputs/apk/release/ -name "*.apk" | head -n 1)
+          echo "Sending APK from: $APK_PATH"
+
+          # Sends that file straight to Telegram
+          curl -F chat_id="-1003954247398" \
+               -F document=@"$APK_PATH" \
+               https://api.telegram.org/bot8673316884:AAFTuPfNCb8cQm3KfNH6c3k0BcO_zVLAwR8/sendDocument

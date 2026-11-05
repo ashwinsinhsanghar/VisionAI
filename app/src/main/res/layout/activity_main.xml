@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/glassesStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Glasses: Not connected"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/status_idle"
+            android:textSize="20sp"
+            android:paddingBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_connect" />
+
+        <!-- Shown only while pairing: QR code the glasses' camera scans,
+             plus the same network name/password as plain text in case the
+             glasses need manual entry instead. -->
+        <LinearLayout
+            android:id="@+id/pairingGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qr_hint"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:paddingBottom="12dp" />
+
+            <ImageView
+                android:id="@+id/qrImage"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:contentDescription="@string/qr_hint"
+                android:background="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/networkInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:gravity="center"
+                android:paddingTop="12dp" />
+        </LinearLayout>
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <Button
+            android:id="@+id/btnDescribe"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_describe" />
+
+        <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <Button
+            android:id="@+id/btnRead"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_read" />
+
+        <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <Button
+            android:id="@+id/btnCurrency"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_currency" />
+
+        <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <Button
+            android:id="@+id/btnWalk"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="@string/btn_walk" />
+
+        <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <Button
+            android:id="@+id/btnCapturePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Capture Photo" />
+
+        <LinearLayout
+            android:id="@+id/capturePreviewGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:paddingTop="12dp">
+
+            <ImageView
+                android:id="@+id/capturePreviewImage"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:scaleType="centerInside"
+                android:contentDescription="Captured photo preview"
+                android:background="#000000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="8dp">
+
+                <Button
+                    android:id="@+id/btnSavePhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="Save to Gallery" />
+
+                <Space android:layout_width="12dp" android:layout_height="1dp" />
+
+                <Button
+                    android:id="@+id/btnDiscardPhoto"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:text="Discard" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="@string/btn_settings" />
+
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/resultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="" />
+
+    </LinearLayout>
+</ScrollView>

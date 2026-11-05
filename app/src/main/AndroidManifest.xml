@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Wi-Fi Direct: lets the phone form the DIRECT-hs-xxxx group the glasses join -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Required by WifiP2pManager on some OEMs even though we don't use Bluetooth classic -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- Walking Assistant's LiDAR proximity alerts vibrate the phone -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Only used for the 5-second-hold Emergency SOS gesture -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- Without this, Android 11+ hides other installed TTS apps from
+         TextToSpeech.getEngines() - only one or two would ever show up.
+         This exact action name is TextToSpeech.Engine.INTENT_ACTION_TTS_SERVICE. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.START_TTS_ENGINE" />
+        </intent>
+    </queries>
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.VisionBridge"
+        android:usesCleartextTraffic="true">
+        <!-- cleartext traffic is required: the glasses' own capture.cgi server is plain http on the
+             Wi-Fi Direct link; Gemini calls still go out over https regardless of this flag -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SettingsActivity" android:exported="false" />
+
+        <service
+            android:name=".GlassesConnectionService"
+            android:exported="false"
+            android:foregroundServiceType="connectedDevice" />
+
+    </application>
+</manifest>

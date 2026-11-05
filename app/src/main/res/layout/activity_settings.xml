@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text-to-Speech Engine"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/ttsEngineSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:contentDescription="Text-to-Speech Engine" />
+
+        <Space android:layout_width="match_parent" android:layout_height="24dp" />
+
+        <TextView
+            android:id="@+id/speedLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speech Speed: 1.0x"
+            android:textSize="16sp" />
+
+        <SeekBar
+            android:id="@+id/speedSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="35"
+            android:contentDescription="Speech speed" />
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/pitchLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Speech Pitch: 1.0x"
+            android:textSize="16sp" />
+
+        <SeekBar
+            android:id="@+id/pitchSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="35"
+            android:contentDescription="Speech pitch" />
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <Button
+            android:id="@+id/btnTestVoice"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Test Voice" />
+
+        <Space android:layout_width="match_parent" android:layout_height="28dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Walking Assistant Model"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/walkingModelStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingBottom="8dp"
+            android:text="Checking..." />
+
+        <Button
+            android:id="@+id/btnDownloadWalkingModel"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Download Walking Assistant Model" />
+
+        <Space android:layout_width="match_parent" android:layout_height="28dp" />
+
+        <Switch
+            android:id="@+id/shortDescriptionSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Short, point-to-point answers (off = detailed)" />
+
+        <Space android:layout_width="match_parent" android:layout_height="28dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AI Service"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/aiServiceSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:contentDescription="AI Service" />
+
+        <Space android:layout_width="match_parent" android:layout_height="16dp" />
+
+        <TextView
+            android:id="@+id/apiKeyLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Google Gemini API Key"
+            android:textSize="16sp"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/apiKeyInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Enter your API key here"
+            android:contentDescription="API Key" />
+
+        <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+        <TextView
+            android:id="@+id/aiModelStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingBottom="8dp"
+            android:text="Model: not set" />
+
+        <Button
+            android:id="@+id/btnSelectModel"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Fetch and Select Model" />
+
+        <Space android:layout_width="match_parent" android:layout_height="28dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Emergency Contact Number"
+            android:textSize="18sp"
+            android:paddingBottom="8dp" />
+
+        <EditText
+            android:id="@+id/emergencyNumberInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="Phone number to call on 5-second hold"
+            android:contentDescription="Emergency Contact Number" />
+
+        <Space android:layout_width="match_parent" android:layout_height="28dp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Save" />
+
+    </LinearLayout>
+</ScrollView>
